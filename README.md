@@ -29,8 +29,6 @@ mvn install
 mvn jetty:run
 ```
 
-This starts Jetty server and the project is available under the following URL in a web browser:
-
-http://localhost:8080/whiteboard-showcase
+This starts Jetty server and the project is available under the following URL in a web browser: http://localhost:8080/whiteboard-showcase
 
 Jetty will continue to run until you stop it with a in the console / terminal window where it is running.
