@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+<ui:composition>
+    <h:panelGroup layout="block" style="text-align: center; font-weight: bold; padding: 15px 10px;">
+        <h:outputText value="There are two ways to invite other people to your board:"/>
+    </h:panelGroup>
+    <h:panelGroup layout="block" style="text-align: left;">
+        <h:outputText value="1)" style="font-weight: bold;"/>
+        <h:outputText value=" Please click the link below to open your email client."/>
+    </h:panelGroup>
+    <h:panelGroup layout="block" style="text-align: center; padding: 12px 10px;">
+        <h:outputLink style="color: blue !important; outline: 0;" value="#{displayWhiteboard.mailto}">
+            <h:outputText value="Click to open your email client"/>
+        </h:outputLink>
+    </h:panelGroup>
+    <h:panelGroup layout="block" style="text-align: left;">
+        <h:outputText value="2)" style="font-weight: bold;"/>
+        <h:outputText
+                value=" Please copy the below link into your email. The invitation email should include this link which the recipient must click on to join this whiteboard:"/>
+    </h:panelGroup>
+    <h:panelGroup layout="block" style="text-align: center; padding: 12px 10px;">
+        <h:outputText value="#{displayWhiteboard.invitationLink}" style="color: blue;"/>
+    </h:panelGroup>
+    <h:panelGroup layout="block" style="text-align: center; padding: 12px 10px;">
+        <p:commandButton type="button" value="Close" onclick="inviteWidget.hide();"/>
+    </h:panelGroup>
+</ui:composition>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite/composite">
+<ui:composition>
+    <h:panelGrid columns="2" styleClass="editPropsTable" columnClasses="editPropsCol1,editPropsCol2"
+                 footerClass="editPropsFooter">
+        <h:outputLabel for="rectCx" value="X coordinate (top left)"/>
+        <cc:numericInput id="rectCx" type="Rectangle"/>
+        <h:outputLabel for="rectCy" value="Y coordinate (top left)"/>
+        <cc:numericInput id="rectCy" type="Rectangle"/>
+        <h:outputLabel for="rectWidth" value="Width"/>
+        <cc:numericInput id="rectWidth" allowNegative="false" type="Rectangle" resize="true"/>
+        <h:outputLabel for="rectHeight" value="Height"/>
+        <cc:numericInput id="rectHeight" allowNegative="false" type="Rectangle" resize="true"/>
+        <h:outputLabel for="cornerRadius" value="Corners radius"/>
+        <p:spinner id="cornerRadius" min="0" max="99" maxlength="2" onchange="sendPropertiesChanges('Rectangle')"/>
+        <h:outputLabel for="rectBkgrColor" value="Background color"/>
+        <cc:colorPicker id="rectBkgrColor" type="Rectangle"/>
+        <h:outputLabel for="rectBorderColor" value="Border color"/>
+        <cc:colorPicker id="rectBorderColor" type="Rectangle"/>
+        <h:outputLabel for="rectBorderWidth" value="Border width"/>
+        <p:spinner id="rectBorderWidth" min="1" max="100" maxlength="3" onchange="sendPropertiesChanges('Rectangle')"/>
+        <h:outputLabel for="rectBorderStyle" value="Border style"/>
+        <h:selectOneMenu id="rectBorderStyle" style="font-weight: bold; width: 60px;"
+                         onchange="sendPropertiesChanges('Rectangle')">
+            <f:selectItems value="#{displayWhiteboard.lineStyles}"/>
+        </h:selectOneMenu>
+        <h:outputLabel for="rectBkgrOpacity" value="Background opacity"/>
+        <p:spinner id="rectBkgrOpacity" min="0" max="1" maxlength="1" stepFactor="0.1"
+                   onchange="sendPropertiesChanges('Rectangle')"/>
+        <h:outputLabel for="rectBorderOpacity" value="Border opacity"/>
+        <p:spinner id="rectBorderOpacity" min="0" max="1" maxlength="1" stepFactor="0.1"
+                   onchange="sendPropertiesChanges('Rectangle')"/>
+        <h:outputLabel for="rectRotation" value="Rotate (0-360&deg;)"/>
+        <p:spinner id="rectRotation" min="0" max="360" maxlength="3" onchange="sendPropertiesChanges('Rectangle', false, true)"/>
+        <ui:include src="/sections/defbutton.xhtml">
+            <ui:param name="properties" value="rectangle"/>
+        </ui:include>
+    </h:panelGrid>
+</ui:composition>
+</html>

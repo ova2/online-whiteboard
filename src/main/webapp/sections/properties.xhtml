@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+<ui:composition>
+    <f:subview id="#{subviewId}">
+        <h:panelGroup layout="block" styleClass="editPanel editNoSelection">
+            <ui:include src="/sections/properties/noSelection.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="editPanel editText">
+            <ui:include src="/sections/properties/text.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="editPanel editFreeLine">
+            <ui:include src="/sections/properties/freeLine.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="editPanel editStraightLine">
+            <ui:include src="/sections/properties/straightLine.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="editPanel editRectangle">
+            <ui:include src="/sections/properties/rectangle.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="editPanel editCircle">
+            <ui:include src="/sections/properties/circle.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="editPanel editEllipse">
+            <ui:include src="/sections/properties/ellipse.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="editPanel editImage">
+            <ui:include src="/sections/properties/image.xhtml"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="editPanel editIcon">
+            <ui:include src="/sections/properties/icon.xhtml"/>
+        </h:panelGroup>
+    </f:subview>
+</ui:composition>
+</html>

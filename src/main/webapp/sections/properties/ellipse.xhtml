@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite/composite">
+<ui:composition>
+    <h:panelGrid columns="2" styleClass="editPropsTable" columnClasses="editPropsCol1,editPropsCol2"
+                 footerClass="editPropsFooter">
+        <h:outputLabel for="ellipseCx" value="X coordinate (centre)"/>
+        <cc:numericInput id="ellipseCx" type="Ellipse"/>
+        <h:outputLabel for="ellipseCy" value="Y coordinate (centre)"/>
+        <cc:numericInput id="ellipseCy" type="Ellipse"/>
+        <h:outputLabel for="hRadius" value="Horizontal radius"/>
+        <p:spinner id="hRadius" min="1" max="999" maxlength="3" onchange="sendPropertiesChanges('Ellipse', true)"/>
+        <h:outputLabel for="vRadius" value="Vertical radius"/>
+        <p:spinner id="vRadius" min="1" max="999" maxlength="3" onchange="sendPropertiesChanges('Ellipse', true)"/>
+        <h:outputLabel for="ellipseBkgrColor" value="Background color"/>
+        <cc:colorPicker id="ellipseBkgrColor" type="Ellipse"/>
+        <h:outputLabel for="ellipseBorderColor" value="Border color"/>
+        <cc:colorPicker id="ellipseBorderColor" type="Ellipse"/>
+        <h:outputLabel for="ellipseBorderWidth" value="Border width"/>
+        <p:spinner id="ellipseBorderWidth" min="1" max="100" maxlength="3" onchange="sendPropertiesChanges('Ellipse')"/>
+        <h:outputLabel for="ellipseBorderStyle" value="Border style"/>
+        <h:selectOneMenu id="ellipseBorderStyle" style="font-weight: bold; width: 60px;"
+                         onchange="sendPropertiesChanges('Ellipse')">
+            <f:selectItems value="#{displayWhiteboard.lineStyles}"/>
+        </h:selectOneMenu>
+        <h:outputLabel for="ellipseBkgrOpacity" value="Background opacity"/>
+        <p:spinner id="ellipseBkgrOpacity" min="0" max="1" maxlength="1" stepFactor="0.1"
+                   onchange="sendPropertiesChanges('Ellipse')"/>
+        <h:outputLabel for="ellipseBorderOpacity" value="Border opacity"/>
+        <p:spinner id="ellipseBorderOpacity" min="0" max="1" maxlength="1" stepFactor="0.1"
+                   onchange="sendPropertiesChanges('Ellipse')"/>
+        <h:outputLabel for="ellipseRotation" value="Rotate (0-360&deg;)"/>
+        <p:spinner id="ellipseRotation" min="0" max="360" maxlength="3" onchange="sendPropertiesChanges('Ellipse', false, true)"/>
+        <ui:include src="/sections/defbutton.xhtml">
+            <ui:param name="properties" value="ellipse"/>
+        </ui:include>
+    </h:panelGrid>
+</ui:composition>
+</html>

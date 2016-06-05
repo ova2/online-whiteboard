@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite/composite">
+<ui:composition>
+    <h:panelGrid columns="2" styleClass="editPropsTable" columnClasses="editPropsCol1,editPropsCol2"
+                 footerClass="editPropsFooter">
+        <h:outputLabel for="iconCx" value="X coordinate (top left)"/>
+        <cc:numericInput id="iconCx" type="Icon"/>
+        <h:outputLabel for="iconCy" value="Y coordinate (top left)"/>
+        <cc:numericInput id="iconCy" type="Icon"/>
+        <h:outputLabel for="iconRotation" value="Rotate (0-360&deg;)"/>
+        <p:spinner id="iconRotation" min="0" max="360" maxlength="3" onchange="sendPropertiesChanges('Icon', false, true)"/>
+        <h:outputLabel for="iconScale" value="Scale factor"/>
+        <p:spinner id="iconScale" min="0.1" max="10" maxlength="2" stepFactor="0.1"
+                   onchange="sendPropertiesChanges('Icon', true)"/>
+        <ui:include src="/sections/defbutton.xhtml">
+            <ui:param name="properties" value="icon"/>
+        </ui:include>
+    </h:panelGrid>
+</ui:composition>
+</html>

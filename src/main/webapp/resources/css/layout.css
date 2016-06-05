@@ -1,0 +1,43 @@
+html {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Trebuchet MS, Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.centredLayout {
+    width: 100%;
+    height: 100%;
+}
+
+.centredLayout table.outer {
+    margin: auto;
+    width: auto;
+    height: 100%;
+}
+
+.centredLayout table.outer td {
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: collapse;
+}
+
+.centredLayout div.inside {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#criticalErrorMessages {
+	margin: 10px;
+	width: 664px;
+	text-align: left;
+}

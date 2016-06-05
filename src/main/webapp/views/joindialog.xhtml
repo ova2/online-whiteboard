@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite/composite">
+<ui:composition template="/templates/centredPageLayout.xhtml">
+    <ui:define name="center">
+        <p:fieldset legend="Join Whiteboard">
+            <p:messages/>
+            <h:form id="mainForm" prependId="false">
+                <h:panelGrid columns="2" id="whiteboardPanel" columnClasses="whiteboardCol1Alt,whiteboardCol2"
+                             headerClass="whiteboardHeader" footerClass="whiteboardFooter">
+                    <f:facet name="header">
+                        <h:outputText value="Choose any user name and join the whiteboard '#{joinWhiteboard.title}'"/>
+                    </f:facet>
+                    <cc:requiredLabel for="wbUserName" value="User name"/>
+                    <p:inputText id="wbUserName" value="#{joinWhiteboard.user}" required="true" label="User name"/>
+                    <f:facet name="footer">
+                        <p:captcha label="Captcha"/>
+                        <p:commandButton id="dialogButton" value="Join and Start Drawing!" ajax="false"
+                                         action="#{joinWhiteboard.join}"/>
+                    </f:facet>
+                </h:panelGrid>
+                <p:focus for="wbUserName"/>
+            </h:form>
+        </p:fieldset>
+    </ui:define>
+    <ui:define name="resources">
+        <h:outputStylesheet library="css" name="startdialog.css"/>
+    </ui:define>
+</ui:composition>
+</html>

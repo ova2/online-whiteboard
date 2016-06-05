@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+<ui:composition template="/templates/centredPageLayout.xhtml">
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{errorMessagePreparer.prepareErrorMessage}"/>
+        </f:metadata>
+    </ui:define>
+    <ui:define name="center">
+        <h:panelGroup id="criticalErrorMessages" layout="block">
+            <h:graphicImage library="img" name="erroroops.png"/>
+            <p:messages showSummary="true" showDetail="true"/>
+        </h:panelGroup>
+    </ui:define>
+</ui:composition>
+</html>

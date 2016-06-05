@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite/composite">
+<ui:composition>
+    <h:panelGrid columns="2" styleClass="editPropsTable" columnClasses="editPropsCol1,editPropsCol2"
+                 footerClass="editPropsFooter">
+        <h:outputLabel for="textCx" value="X coordinate (centre)"/>
+        <cc:numericInput id="textCx" type="Text"/>
+        <h:outputLabel for="textCy" value="Y coordinate (centre)"/>
+        <cc:numericInput id="textCy" type="Text"/>
+        <h:outputLabel for="textArea" value="Text"/>
+        <h:inputTextarea id="textArea" rows="2" style="width: 160px;" value="" onchange="sendPropertiesChanges('Text', true)"/>
+        <h:outputLabel for="fontFamily" value="Font family"/>
+        <h:selectOneMenu id="fontFamily" onchange="sendPropertiesChanges('Text', true)">
+            <f:selectItems value="#{displayWhiteboard.fontFamilies}"/>
+        </h:selectOneMenu>
+        <h:outputLabel for="fontSize" value="Font size"/>
+        <p:spinner id="fontSize" min="6" max="96" maxlength="2" onchange="sendPropertiesChanges('Text', true)"/>
+        <h:outputLabel for="fontWeight" value="Font weight"/>
+        <h:selectOneRadio id="fontWeight" layout="lineDirection" styleClass="radioButtons"
+                          onclick="sendPropertiesChanges('Text', true)">
+            <f:selectItem itemLabel="Normal" itemValue="normal"/>
+            <f:selectItem itemLabel="Bold" itemValue="bold"/>
+        </h:selectOneRadio>
+        <h:outputLabel for="fontStyle" value="Font style"/>
+        <h:selectOneRadio id="fontStyle" layout="lineDirection" styleClass="radioButtons"
+                          onclick="sendPropertiesChanges('Text', true)">
+            <f:selectItem itemLabel="Normal" itemValue="normal"/>
+            <f:selectItem itemLabel="Italic" itemValue="italic"/>
+        </h:selectOneRadio>
+        <h:outputLabel for="textColor" value="Color"/>
+        <cc:colorPicker id="textColor" type="Text"/>
+        <h:outputLabel for="textRotation" value="Rotate (0-360&deg;)"/>
+        <p:spinner id="textRotation" min="0" max="360" maxlength="3" onchange="sendPropertiesChanges('Text', false, true)"/>
+        <ui:include src="/sections/defbutton.xhtml">
+            <ui:param name="properties" value="text"/>
+        </ui:include>
+    </h:panelGrid>
+</ui:composition>
+</html>

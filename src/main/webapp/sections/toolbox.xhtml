@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+<ui:composition>
+    <p:commandButton value="Input Text" image="btn-icon btn-inputText"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('textMode', 'text')"/>
+    <p:commandButton value="Draw Free Line" image="btn-icon btn-drawFreeLine"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('freeLineMode', 'pointer')"/>
+    <p:commandButton value="Draw Straight Line" image="btn-icon btn-drawStraightLine"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('straightLineMode', 'pointer')"/>
+    <p:commandButton value="Draw Rectangle" image="btn-icon btn-drawRectangle"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('rectangleMode', 'crosshair')"/>
+    <p:commandButton value="Draw Circle" image="btn-icon btn-drawCircle"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('circleMode', 'crosshair')"/>
+    <p:commandButton value="Draw Ellipse" image="btn-icon btn-drawEllipse"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('ellipseMode', 'crosshair')"/>
+    <p:commandButton value="Paste Image" image="btn-icon btn-pasteImage"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('imageMode', 'crosshair')"/>
+    <p:commandButton value="Paste Icon" image="btn-icon btn-pasteIcon"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('iconMode', 'crosshair')"/>
+    <p:separator style="height: 4px;"/>
+    <p:commandButton value="Select Element" image="btn-icon btn-selectElement"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('selectMode', 'default')"/>
+    <p:commandButton value="Move Element" image="btn-icon btn-moveElement"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('moveMode', 'default')"/>
+    <p:commandButton value="Bring to Front" image="btn-icon btn-bringFrontElement"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('bringFrontMode', 'default')"/>
+    <p:commandButton value="Bring to Back" image="btn-icon btn-bringBackElement"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('bringBackMode', 'default')"/>
+    <p:commandButton value="Clone Element" image="btn-icon btn-cloneElement"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('cloneMode', 'default')"/>
+    <p:commandButton value="Remove Element" image="btn-icon btn-removeElement"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('removeMode', 'default')"/>
+    <p:commandButton value="Clear Whiteboard" image="btn-icon btn-clearWhiteboard"
+                     styleClass="toolboxItem" type="button"
+                     onclick="clearWbWidget.show();"/>
+    <p:commandButton value="Resize Whiteboard" image="btn-icon btn-resizeWhiteboard"
+                     styleClass="toolboxItem" type="button"
+                     onclick="whiteboardDesigner.switchToMode('resizeMode', 'default'); whiteboardDesigner.openResizeDialog()"/>
+</ui:composition>
+</html>

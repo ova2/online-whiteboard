@@ -1,0 +1,364 @@
+html, body {
+    width: auto !important;
+    height: auto !important;
+}
+
+#headline {
+    margin: 10px 10px 10px 15px;
+}
+
+td.colTitle {
+    font-size: 22px;
+    font-weight: bold;
+    color: #D35D2A;
+    vertical-align: middle;
+    padding-right: 80px;
+    white-space: nowrap;
+}
+
+td.colImg {
+    vertical-align: middle;
+    padding: 0 5px 0 5px;
+}
+
+td.colImg img {
+    border: none;
+}
+
+td.colCreated,
+td.colUsers,
+td.colInvite,
+td.colPin {
+    vertical-align: middle;
+    padding-right: 15px;
+    white-space: nowrap;
+}
+
+td.colLog {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+#whiteboard {
+    border: 2px solid #3E9AE4;
+    margin-bottom: 10px;
+}
+
+#toolboxDialog,
+#propertiesDialog,
+#monitoringDialog {
+    padding: 0;
+}
+
+.editPanel {
+    vertical-align: middle;
+    text-align: left;
+    padding: 8px;
+    display: none;
+}
+
+.editNoSelection {
+    padding: 30px 80px 30px 80px;
+    text-align: center;
+    display: block;
+    white-space: nowrap;
+}
+
+.toolboxItem {
+    height: 28px;
+    white-space: nowrap;
+    display: block;
+    margin: 2px 0 0 0 !important;
+    border: none !important;
+    width: 100% !important;
+    text-align: left !important;
+}
+
+.monitoringGroup {
+    height: 88px;
+    vertical-align: middle;
+    text-align: left;
+    padding: 8px;
+    overflow: auto;
+}
+
+.toolboxPanel .ui-state-default,
+.toolboxPanel .ui-widget-content .ui-state-default {
+    font-weight: normal;
+}
+
+.toolboxPanel .ui-state-hover,
+.toolboxPanel .ui-widget-content .ui-state-hover {
+    font-weight: bold;
+}
+
+.toolboxPanel .ui-state-selected,
+.toolboxPanel .ui-widget-content .ui-state-selected {
+    background: url("#{resource['primefaces-cupertino:ui-bg_glass_50_3baae3_1x400.png']}") repeat-x scroll 50% 50% #3BAAE3;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.toolboxItem .ui-button-text {
+    padding-left: 48px !important;
+}
+
+#whiteboardGrid {
+    margin: 5px 10px 10px 10px;
+}
+
+#whiteboardGrid td {
+    vertical-align: top;
+    padding-right: 10px;
+}
+
+#whiteboardGrid .toolboxItem .ui-button-text {
+    width: 140px;
+}
+
+#whiteboardGrid .ui-dialog {
+    position: static;
+    width: auto;
+}
+
+.btn-icon {
+    margin: -13px 0 -13px 5px !important;
+    width: 22px;
+    height: 22px;
+}
+
+.btn-inputText {
+    background-image: url("#{resource['img:inputText.png']}") !important;
+}
+
+.btn-drawFreeLine {
+    background-image: url("#{resource['img:drawFreeLine.png']}") !important;
+}
+
+.btn-drawStraightLine {
+    background-image: url("#{resource['img:drawStraightLine.png']}") !important;
+}
+
+.btn-drawRectangle {
+    background-image: url("#{resource['img:drawRectangle.png']}") !important;
+}
+
+.btn-drawCircle {
+    background-image: url("#{resource['img:drawCircle.png']}") !important;
+}
+
+.btn-drawEllipse {
+    background-image: url("#{resource['img:drawEllipse.png']}") !important;
+}
+
+.btn-pasteImage {
+    background-image: url("#{resource['img:pasteImage.png']}") !important;
+}
+
+.btn-pasteIcon {
+    background-image: url("#{resource['img:pasteIcon.png']}") !important;
+}
+
+.btn-selectElement {
+    background-image: url("#{resource['img:selectElement.png']}") !important;
+}
+
+.btn-moveElement {
+    background-image: url("#{resource['img:moveElement.png']}") !important;
+}
+
+.btn-bringFrontElement {
+    background-image: url("#{resource['img:bringFront.png']}") !important;
+}
+
+.btn-bringBackElement {
+    background-image: url("#{resource['img:bringBack.png']}") !important;
+}
+
+.btn-cloneElement {
+    background-image: url("#{resource['img:cloneElement.png']}") !important;
+}
+
+.btn-removeElement {
+    background-image: url("#{resource['img:removeElement.png']}") !important;
+}
+
+.btn-clearWhiteboard {
+    background-image: url("#{resource['img:clearWhiteboard.png']}") !important;
+}
+
+.btn-resizeWhiteboard {
+    background-image: url("#{resource['img:resizeWhiteboard.png']}") !important;
+}
+
+#iconsArea {
+    margin: 10px 0px 0px 0px;
+}
+
+#textArea {
+    margin: 10px 0px 0px 0px;
+    width: 410px !important;
+    height: 150px !important;
+}
+
+.dlgImageCol1 {
+    text-align: right !important;
+    padding: 3px 3px 3px 0;
+    white-space: nowrap;
+}
+
+.dlgImageCol2 {
+    text-align: left !important;
+    padding: 3px 10px 3px 10px;
+}
+
+.dlgResizeCol1 {
+    text-align: right !important;
+    padding: 3px 5px 3px 5px;
+    white-space: nowrap;
+}
+
+.dlgResizeCol2 {
+    text-align: left !important;
+    padding: 3px 5px 3px 5px;
+}
+
+#inputUrl {
+    width: 340px !important;
+}
+
+#imgWidth,
+#imgHeight,
+#wbWidth,
+#wbHeight {
+    width: 80px !important;
+}
+
+.errormsg li {
+    list-style: none;
+}
+
+.errormsg li label {
+    color: red;
+    font-weight: bold;
+}
+
+.autoWidthDialog {
+    width: auto !important;
+}
+
+.headlessDialog .ui-dialog-titlebar {
+    display: none !important;
+}
+
+.ui-dialog .commonDialog {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    white-space: nowrap;
+    margin: auto;
+    border: none;
+}
+
+.radioButtons,
+.radioButtons td {
+    white-space: nowrap;
+    padding: 0;
+}
+
+.radioLineDirection td:first-child {
+    padding-right: 15px;
+}
+
+.radioButtons input {
+    margin-left: 0px;
+    width: auto !important;
+    border: none !important;
+    background: none !important;
+}
+
+.radioButtons input,
+.radioButtons label {
+    vertical-align: middle;
+}
+
+.editPropsTable {
+    margin: 0;
+}
+
+.editPropsFooter {
+    padding-top: 12px;
+    text-align: center !important;
+}
+
+.editPropsCol1 {
+    text-align: right !important;
+    vertical-align: middle !important;
+    padding: 2px 4px 2px 0 !important;
+    white-space: nowrap;
+}
+
+.editPropsCol2 {
+    text-align: left !important;
+    vertical-align: middle !important;
+    padding: 2px !important;
+}
+
+.editPropsCol2 input,
+.editPropsCol2 select {
+    border: 1px solid #AED0EA;
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 2px;
+}
+
+.editPropsCol2 input {
+    height: 16px;
+    width: 80px;
+}
+
+.webkit .editPropsCol2 select {
+    padding: 1px;
+}
+
+.editPropsCol2 .ui-spinner-button {
+    height: 10px !important;
+}
+
+.webkit .editPropsCol2 .ui-spinner-buttons {
+    top: 13px !important;
+}
+
+.ie .editPropsCol2 .ui-spinner-buttons {
+    top: 12px !important;
+}
+
+.ie7 .editPropsCol2 .ui-spinner-buttons {
+    top: 17px !important;
+}
+
+.editPropsCol2 .ui-spinner-buttons .ui-spinner-up {
+    margin-top: -16px !important;
+}
+
+.linux.gecko .editPropsCol2 .ui-spinner-buttons .ui-spinner-up {
+    margin-top: -17px !important;
+}
+
+.editPropsCol2 .ui-spinner-buttons .ui-spinner-up span,
+.editPropsCol2 .ui-spinner-buttons .ui-spinner-down span {
+    margin-top: -3px !important;
+}
+
+.editPropsCol2 .ui-inputfield {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    padding: 3px !important;
+    font-weight: normal !important;
+}
+
+.editPropsCol2 .colorSelector div {
+    background: url("#{resource['img:colorpicker_icon.png']}") repeat scroll center center transparent;
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
+}

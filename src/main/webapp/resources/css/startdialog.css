@@ -1,0 +1,48 @@
+#whiteboardPanel {
+    margin-top: 5px;
+}
+
+.whiteboardCol1 {
+    text-align: right !important;
+    padding: 2px 2px 2px 0;
+    white-space: nowrap;
+}
+
+.whiteboardCol1Alt {
+    text-align: right !important;
+    padding: 2px 2px 2px 0;
+    white-space: nowrap;
+    width: 70px;
+}
+
+.whiteboardCol2 {
+    text-align: left !important;
+    padding: 2px 10px 2px 10px;
+}
+
+.whiteboardCol2 input {
+    width: 100%;
+}
+
+#wbWidth,
+#wbHeight {
+    width: 80px !important;
+}
+
+.whiteboardHeader {
+    padding: 5px 5px 20px 5px;
+    text-align: center;
+}
+
+.whiteboardFooter {
+    padding: 10px 10px 5px 10px;
+    text-align: center;
+}
+
+#recaptcha_area, #recaptcha_table {
+    margin: auto;
+}
+
+#dialogButton {
+    margin-top: 15px;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+<f:view contentType="text/html" locale="en">
+    <ui:insert name="metadata"/>
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="pragma" content="no-cache"/>
+        <meta http-equiv="cache-control" content="no-cache"/>
+        <meta http-equiv="expires" content="0"/>
+    </h:head>
+    <h:body>
+        <ui:insert name="body"/>
+        <h:outputStylesheet library="css" name="primefaces.css"/>
+        <h:outputStylesheet library="css" name="layout.css"/>
+        <ui:insert name="resources"/>
+    </h:body>
+</f:view>
+</html>

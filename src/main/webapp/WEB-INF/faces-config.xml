@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+              version="2.0">
+
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+    </application>
+
+    <factory>
+        <exception-handler-factory>
+            com.googlecode.whiteboard.errorhandler.DefaultExceptionHandlerFactory
+        </exception-handler-factory>
+    </factory>
+
+    <converter>
+        <converter-id>com.googlecode.whiteboard.converter.PixelConverter</converter-id>
+        <converter-class>com.googlecode.whiteboard.converter.PixelConverter</converter-class>
+    </converter>
+
+    <managed-bean eager="true">
+        <managed-bean-name>whiteboardsManager</managed-bean-name>
+        <managed-bean-class>com.googlecode.whiteboard.controller.WhiteboardsManager</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>errorMessagePreparer</managed-bean-name>
+        <managed-bean-class>com.googlecode.whiteboard.controller.ErrorMessagePreparer</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>whiteboardIdentifiers</managed-bean-name>
+        <managed-bean-class>com.googlecode.whiteboard.controller.WhiteboardIdentifiers</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>panelsState</managed-bean-name>
+        <managed-bean-class>com.googlecode.whiteboard.controller.PanelsState</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>createWhiteboard</managed-bean-name>
+        <managed-bean-class>com.googlecode.whiteboard.controller.CreateWhiteboard</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>whiteboardsManager</property-name>
+            <value>#{whiteboardsManager}</value>
+        </managed-property>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>joinWhiteboard</managed-bean-name>
+        <managed-bean-class>com.googlecode.whiteboard.controller.JoinWhiteboard</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>whiteboardsManager</property-name>
+            <value>#{whiteboardsManager}</value>
+        </managed-property>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>displayWhiteboard</managed-bean-name>
+        <managed-bean-class>com.googlecode.whiteboard.controller.DisplayWhiteboard</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>whiteboardsManager</property-name>
+            <value>#{whiteboardsManager}</value>
+        </managed-property>
+    </managed-bean>
+
+</faces-config>

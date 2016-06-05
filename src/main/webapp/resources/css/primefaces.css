@@ -1,0 +1,52 @@
+input,
+select,
+textarea,
+button,
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+    font-family: Trebuchet MS, Verdana, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+}
+
+.ui-widget-header,
+.ui-widget-content,
+.ui-widget-header .ui-widget-header,
+.ui-widget-content .ui-widget-content {
+    font-family: Trebuchet MS, Verdana, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+}
+
+.ui-button .ui-button-text {
+    line-height: 1.3;
+}
+
+.ui-button-text-only .ui-button-text {
+    padding: .3em 1em;
+}
+
+.ui-button-icon-only .ui-button-text,
+.ui-button-icons-only .ui-button-text {
+    padding: .3em;
+}
+
+.ui-button-text-icon-primary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+    padding: .3em 1em .3em 2.1em;
+}
+
+.ui-button-text-icon-secondary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+    padding: .3em 2.1em .3em 1em;
+}
+
+input.ui-button {
+    padding: .3em 1em;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    text-align: right;
+}
+

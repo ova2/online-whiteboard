@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+<ui:composition>
+    <p:dialog id="inviteDialog" header="Invite people" draggable="false" resizable="false" closable="true"
+              modal="true" styleClass="autoWidthDialog" onShow="onShowAutoWidthDialog(this.jq);"
+              onHide="onHideAutoWidthDialog(this.jq);" widgetVar="inviteWidget">
+        <ui:include src="/sections/invitation.xhtml"/>
+    </p:dialog>
+
+    <p:dialog id="dialogInputText" header="Input text" resizable="false" closable="true" modal="true"
+              styleClass="autoWidthDialog" onShow="onShowAutoWidthDialog(this.jq);"
+              onHide="onHideAutoWidthDialog(this.jq);">
+        <p:inputTextarea id="textArea"/>
+    </p:dialog>
+
+    <p:dialog id="dialogInputImage" header="Input image URL" resizable="false" closable="true" modal="true"
+              styleClass="validatable autoWidthDialog" onShow="onShowAutoWidthDialog(this.jq);"
+              onHide="onHideAutoWidthDialog(this.jq);">
+        <ul id="errorImageUl" class="errormsg"/>
+        <h:panelGrid id="dlgImageGrid" columns="2" columnClasses="dlgImageCol1,dlgImageCol2">
+            <h:outputLabel value="Image URL" for="inputUrl"/>
+            <p:inputText id="inputUrl"/>
+            <h:outputLabel value="Image width (px)" for="imgWidth"/>
+            <h:panelGroup>
+                <p:inputText id="imgWidth" maxlength="4"/>
+                <h:outputLabel value="Image height (px)" for="imgHeight"
+                               style="margin-left: 10px; margin-right: 10px;"/>
+                <p:inputText id="imgHeight" maxlength="4"/>
+            </h:panelGroup>
+        </h:panelGrid>
+    </p:dialog>
+
+    <p:dialog id="dialogResize" header="Resize Whiteboard" resizable="false" closable="true" modal="true"
+              styleClass="validatable autoWidthDialog" onShow="onShowAutoWidthDialog(this.jq);"
+              onHide="onHideAutoWidthDialog(this.jq);">
+        <ul id="errorResizeUl" class="errormsg"/>
+        <h:panelGrid id="dlgResizeGrid" columns="4"
+                     columnClasses="dlgResizeCol1,dlgResizeCol2,dlgResizeCol1,dlgResizeCol2">
+            <h:outputLabel value="Whiteboard width (px)" for="wbWidth"/>
+            <p:inputText id="wbWidth" maxlength="4"/>
+            <h:outputLabel value="Whiteboard height (px)" for="wbHeight"/>
+            <p:inputText id="wbHeight" maxlength="4"/>
+        </h:panelGrid>
+    </p:dialog>
+
+    <p:dialog id="dialogIcons" header="Choose icon" resizable="false" closable="true" modal="true"
+              styleClass="autoWidthDialog" onShow="onShowAutoWidthDialog(this.jq);"
+              onHide="onHideAutoWidthDialog(this.jq);">
+        <h:panelGroup id="iconsArea" layout="block"/>
+    </p:dialog>
+
+    <p:dialog styleClass="headlessDialog autoWidthDialog" modal="true" visible="false" closable="false"
+              draggable="false" resizable="false" widgetVar="loadingDialogWidget"
+              onShow="onShowAutoWidthDialog(this.jq);" onHide="onHideAutoWidthDialog(this.jq);">
+        <h:panelGroup layout="block" styleClass="commonDialog">
+            <h:outputText value="Please wait, data are processing..."/>
+        </h:panelGroup>
+    </p:dialog>
+
+    <p:confirmDialog message="Are you sure you want to clear this Whiteboard?"
+                     header="Confirmation Dialog" severity="alert" widgetVar="clearWbWidget">
+        <p:commandButton value="Yes Sure" 
+                         onclick="whiteboardDesigner.switchToMode('clearMode', 'default'); whiteboardDesigner.clearWhiteboard(); clearWbWidget.hide(); "
+                         type="button"/>
+        <p:commandButton value="Not Sure" onclick="clearWbWidget.hide();" type="button"/>
+    </p:confirmDialog>
+</ui:composition>
+</html>

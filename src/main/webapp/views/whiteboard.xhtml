@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite/composite">
+<ui:composition template="/templates/masterLayout.xhtml">
+    <ui:define name="body">
+        <p:messages id="wbMessages"/>
+        <h:form id="mainForm" prependId="false">
+            <h:panelGrid id="headline" columns="11" cellpadding="0" cellspacing="0"
+                         columnClasses="colTitle,colImg,colCreated,colImg,colUsers,colImg,colInvite,colImg,colPin,colImg,colLog">
+                <h:outputText value="#{displayWhiteboard.title}"/>
+                <h:graphicImage library="img" name="calendar.png"/>
+                <h:outputText value="Created: #{displayWhiteboard.creationDate} by #{displayWhiteboard.creator}"/>
+                <h:graphicImage library="img" name="userInfo.png"/>
+                <h:panelGroup>
+                    <h:outputText id="activeUsers" value="Active users: "/>
+                    <h:outputText id="usersCount" value="#{displayWhiteboard.usersCount}"/>
+                </h:panelGroup>
+                <h:graphicImage library="img" name="sendLink.png"/>
+                <p:commandLink value="Invite people" ajax="false" style="display: block;"
+                               onclick="inviteWidget.show(); return false;"/>
+                <h:graphicImage library="img" name="pinned.png" rendered="#{not panelsState.pinned}"/>
+                <h:graphicImage library="img" name="unpinned.png" rendered="#{panelsState.pinned}"/>
+                <p:commandLink value="Pin panels" style="display: block;"
+                               actionListener="#{panelsState.tooglePinUnpin}" process="headline,pinnedState"
+                               onstart="loadingDialogWidget.show();" oncomplete="pinPanels();"
+                               update="headline,monitorPanel,toolboxPanel,propertiesPanel,unpinnedPanels,pinnedState"
+                               rendered="#{not panelsState.pinned}"/>
+                <p:commandLink value="Unpin panels" style="display: block;"
+                               actionListener="#{panelsState.tooglePinUnpin}" process="headline,pinnedState"
+                               onstart="loadingDialogWidget.show();" oncomplete="unpinPanels();"
+                               update="headline,monitorPanel,toolboxPanel,propertiesPanel,unpinnedPanels,pinnedState"
+                               rendered="#{panelsState.pinned}"/>
+                <h:graphicImage library="img" name="log.png"/>
+                <p:commandLink value="Toggle logging" ajax="false" style="display: block;"
+                               onclick="toggleLogging(); return false;"/>
+            </h:panelGrid>
+            <h:inputHidden id="pinnedState" value="#{panelsState.pinned}"/>
+
+            <h:panelGrid id="whiteboardGrid" columns="3" cellpadding="0" cellspacing="0">
+                <h:panelGroup layout="block">
+                    <h:panelGroup id="whiteboard" layout="block"/>
+                    <h:panelGroup id="monitorPanel">
+                        <h:panelGroup layout="block"
+                                      styleClass="ui-dialog ui-widget-content ui-corner-all"
+                                      rendered="#{panelsState.pinned}">
+                            <cc:dialogTitlebar title="Event Monitoring"/>
+                            <ui:include src="/sections/monitoring.xhtml"/>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup id="toolboxPanel">
+                    <h:panelGroup layout="block" style="width: 200px;"
+                                  styleClass="toolboxPanel ui-dialog ui-widget-content ui-corner-all"
+                                  rendered="#{panelsState.pinned}">
+                        <cc:dialogTitlebar title="Toolbox"/>
+                        <ui:include src="/sections/toolbox.xhtml"/>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup id="propertiesPanel">
+                    <h:panelGroup layout="block"
+                                  styleClass="propertiesPanel autoWidthDialog ui-dialog ui-widget-content ui-corner-all"
+                                  rendered="#{panelsState.pinned}">
+                        <cc:dialogTitlebar title="Edit Properties"/>
+                        <ui:include src="/sections/properties.xhtml">
+                            <ui:param name="subviewId" value="pinnedSubview"/>
+                        </ui:include>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:panelGrid>
+            <script type="text/javascript">
+                /* <![CDATA[ */
+                jQuery("#whiteboard").css({width: '#{displayWhiteboard.width}px', height: '#{displayWhiteboard.height}px'});
+                /* ]]> */
+            </script>
+
+            <h:panelGroup id="unpinnedPanels">
+                <p:dialog id="toolboxDialog" styleClass="toolboxPanel" header="Toolbox" draggable="true"
+                          resizable="false" closable="false" visible="true" position="'right',10"
+                          widgetVar="toolboxWidget" width="200" rendered="#{not panelsState.pinned}">
+                    <ui:include src="/sections/toolbox.xhtml"/>
+                </p:dialog>
+                <p:dialog id="propertiesDialog" styleClass="propertiesPanel autoWidthDialog" header="Edit Properties"
+                          draggable="true" resizable="false" closable="false" visible="true" position="'right',10"
+                          widgetVar="propertiesWidget" rendered="#{not panelsState.pinned}"
+                          onShow="onShowAutoWidthDialog(this.jq);" onHide="onHideAutoWidthDialog(this.jq);">
+                    <ui:include src="/sections/properties.xhtml">
+                        <ui:param name="subviewId" value="unpinnedSubview"/>
+                    </ui:include>
+                </p:dialog>
+                <p:dialog id="monitoringDialog" header="Event Monitoring" draggable="true"
+                          resizable="true" closable="true" visible="true" position="10,'bottom'"
+                          widgetVar="monitoringWidget" width="800" rendered="#{not panelsState.pinned}">
+                    <ui:include src="/sections/monitoring.xhtml"/>
+                </p:dialog>
+                <h:panelGroup rendered="#{not panelsState.pinned}">
+                    <script type="text/javascript">
+                        /* <![CDATA[ */
+                        jQuery(function() {
+                            var wb = jQuery("#whiteboard");
+                            var wbOffset = wb.offset();
+
+                            var parentT = jQuery('#toolboxDialog').parent();
+                            parentT.css('left', wbOffset.left + wb.width() + 14 + 'px');
+                            parentT.css('top', wbOffset.top + 'px');
+
+                            var parentP = jQuery('#propertiesDialog').parent();
+                            parentP.css('left', wbOffset.left + wb.width() + 231 + 'px');
+                            parentP.css('top', wbOffset.top + 'px');
+
+                            var parentM = jQuery('#monitoringDialog').parent();
+                            parentM.css('left', wbOffset.left + 'px');
+                            parentM.css('top', wbOffset.top + wb.height() + 14 + 'px');
+                        });
+                        /* ]]> */
+                    </script>
+                </h:panelGroup>
+            </h:panelGroup>
+
+            <!--
+            <h:inputHidden id="transferedJsonData" value="#{displayWhiteboard.transferedJsonData}"/>
+            <p:remoteCommand id="remoteCmd" name="transferJsonData" process="remoteCmd,transferedJsonData" actionListener="#{displayWhiteboard.transferJsonData}"/>
+            -->
+
+            <ui:include src="/sections/dialogs.xhtml"/>
+        </h:form>
+    </ui:define>
+    <ui:define name="resources">
+        <h:outputScript library="js" name="css-browser-selector.js" target="head"/>
+        <h:outputScript library="js" name="json2-min.js" target="head"/>
+        <h:outputScript library="js" name="uuid.js" target="head"/>
+        <h:outputScript library="js" name="jquery.validate.js" target="head"/>
+        <h:outputScript library="js" name="raphael-min.js" target="head"/>
+        <h:outputScript library="js" name="jquery.atmosphere.js" target="head"/>
+        <h:outputScript library="js" name="blackbird.js" target="head"/>
+        <h:outputStylesheet library="css" name="blackbird.css"/>
+        <h:outputScript library="js" name="wboard-config.js" target="head"/>
+        <h:outputScript library="js" name="wboard-drawing.js" target="body"/>
+        <h:outputScript library="js" name="whiteboard.js" target="body"/>
+        <h:outputStylesheet library="css" name="whiteboard.css"/>
+
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            jQuery(function() {
+                initWhiteboard(#{displayWhiteboard.elementsAsJson}, '#{displayWhiteboard.whiteboard.uuid}', '#{displayWhiteboard.user}', #{displayWhiteboard.usersCount}, '#{displayWhiteboard.pubSubUrl}', '#{displayWhiteboard.pubSubTransport}');
+            });
+            /* ]]> */
+        </script>
+    </ui:define>
+</ui:composition>
+</html>
