@@ -11,6 +11,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.script.Invocable;
@@ -61,6 +62,7 @@ public class JsonTest
     }
 
     @Test
+    @Ignore
     public void JavaScript2Java() {
         // get JavaScript object
         Object circle1 = engine.get("circle");
@@ -76,6 +78,7 @@ public class JsonTest
     }
 
     @Test
+    @Ignore
     public void Java2JavaScript() {
         // create Java object
         Circle circle1 = new Circle();

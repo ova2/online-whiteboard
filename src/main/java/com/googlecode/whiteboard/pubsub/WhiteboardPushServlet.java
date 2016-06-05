@@ -15,6 +15,10 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.ServletConfig;
 import java.lang.reflect.InvocationTargetException;
 
+import static org.atmosphere.cpr.ApplicationConfig.DISABLE_ONSTATE_EVENT;
+import static org.atmosphere.cpr.ApplicationConfig.PROPERTY_SERVLET_MAPPING;
+import static org.atmosphere.cpr.FrameworkConfig.JERSEY_CONTAINER;
+
 /**
  * Extends AtmosphereServlet in order to fix JSF issues.
  *
